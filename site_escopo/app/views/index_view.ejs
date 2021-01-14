@@ -1,0 +1,97 @@
+<!DOCTYPE HTML>
+<html lang="pt-br">
+	<head>
+		<meta charset="UTF-8">
+
+		<title>Oficina ART CAR</title>
+		
+		<!-- JQuery -->
+		<script src="js/jquery-2.2.1.js"></script>
+
+		<!-- bootstrap - link cdn -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+	
+		<!-- incluindo css -->
+		<link href="css/style_index.css" rel="stylesheet">
+
+	</head>
+
+	<body>
+		<div class="row-initial">
+			<div class="row">
+				<div class="col-sm-5">
+					<img class="img1" title="Oficina" alt="Oficina" src="images/img1.png"/>
+				</div>
+					
+				<div class="col-sm-3"></div>
+
+				<div class="col-sm-4">
+					<img class="img2"  title="image" alt="Imagem" src="images/img2.png"/>
+				</div>
+			</div>
+		</div>
+		<br />
+		<nav class="navbar navbar-default navbar-static-top">
+			<div class="container">
+				<div class= "row">
+					<% if(validation.length > 0){ %>
+						<div class="alert alert-danger">
+							<strong>Atenção!</strong>
+							<ul>
+								<% for(var i = 0; i < validation.length; i++){ %>
+									<li><%= validation[i].msg %></li>
+								<% } %>
+							</ul>
+						</div>
+					<% } %>
+						
+					<form class="form-inline form-enter" action="/authenticate" method="POST">
+						<div class="form-group">
+							<label>E-mail</label><br />
+							<input type="email" class="form-control" name="email" id="email" placeholder="name@name.com" autocomplete="off">
+						</div>
+						<div class="form-group">
+							<br/>
+							<br/>
+							<label>Senha</label> <br />
+							<input type="password" name="password" id="password" class="form-control" placeholder="Senha">
+						</div>
+						<br />
+						<br />
+						<button type="submit" class="btn btn-black">Entrar</button>
+					</form>
+					<br />
+					<p>Ainda não é cadastrado? <a href="/registerView">Cadastrar</a></p>
+				</div>                   
+			</div>			
+		</nav>
+  
+        <div class="footer-home">
+            <div class="row">
+				<div class="about-oficina">
+					<div class="col-sm-4">
+						<strong><ul>Serviços no veículo:</ul></strong>
+						<ul>Lanternagem</ul>
+						<ul>Tira-riscos</ul>
+						<ul>Polimento</ul>
+						<ul>Pintura em geral</ul>
+						<ul>Mecânica</ul>
+					</div>
+					<div class="col-sm-4">
+						<strong><ul>Oficina Art Car</ul></strong>
+						<ul>CPNJ: 18.660.606-0001/19</ul>
+						<br />
+						<strong><ul>Endereço:</ul></strong>
+						<ul>Av. Gentil Bittencourt, 3377</ul>
+						<ul>Bairro de Canudos	Belém - PA</ul>
+					</div>					
+					<div class="col-sm-4">
+						<strong><ul>Contatos:</ul></strong>
+						<ul>Celular: (91) 98109-4413</ul>
+						<ul>E-mail: silvio.pintordeauto@gmail.com</ul>
+					</div>
+				</div>              
+            </div>
+        </div>		
+	</body>
+</html>

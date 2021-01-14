@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <title>Área do cliente</title>
+  <meta charset="utf-8">
+
+  <!-- JQuery -->
+  <script src="js/jquery-2.2.1.js"></script>
+      
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- bootstrap - link cdn -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+  <!-- incluindo css -->
+  <link href="css/style_areaAdmin.css" rel="stylesheet">
+
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    
+  <script>
+    $(document).ready(function(){
+      $('#btn_exit').click(function(){
+          window.location.href = '/exit';
+        });
+      
+    }); 
+  </script>
+
+</head>
+
+
+<body>
+  <nav class="navbar navbar-default navbar-static-top">
+    <div class="container">
+      <div class="form-group exit">
+        <button type="button" class="btn btn-info pull-right" id="btn_exit">Sair</button>
+      </div>
+    </div>
+  </nav>
+
+      
+  <div class="container">
+    <h2>Área admin</h2>
+    <div class="container-table">
+      <h3>Clientes</h3> 
+      <table class="table">
+        <thead class="thead-light">
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Nome</th>
+            <th scope="col">CPF</th>
+            <th scope="col">Gênero</th>
+            <th scope="col">Endereço</th>
+            <th scope="col">Nº de celular</th>
+            <th scope="col">E-mail</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% for (var i = 0; i< register.length; i++){ %>
+            <tr>
+              <th scope="row"><%=i%></th>
+              <td><%=register[i].name%></td>
+              <td><%=register[i].cpf%></td>
+              <td><%=register[i].genre%></td>
+              <td><%=register[i].address%></td>
+              <td><%=register[i].phone%></td>
+              <td><%=register[i].email%></td>
+            </tr>
+          <% } %> 
+        </tbody>   
+      </table>          
+    </div>
+  </div>
+</body>
+</html>

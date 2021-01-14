@@ -1,0 +1,9 @@
+<% if(orcamentos.length > 0) { %>
+    <div class="alert">
+      <ul>
+        <% for(var i = 0; i < orcamentos.length; i++){ %>
+          <li><%= orcamentos[i] %></li>
+        <% } %>
+      </ul>
+    </div>
+<% } %>

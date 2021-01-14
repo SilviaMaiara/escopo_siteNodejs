@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<title>Área do cliente</title>
+<meta charset="utf-8">
+
+<!-- JQuery -->
+<script src="js/jquery-2.2.1.js"></script>
+    
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- bootstrap - link cdn -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+<!-- incluindo css -->
+<link href="css/style_areaClient.css" rel="stylesheet">
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+ 
+<script>
+  $(document).ready(function(){
+    $('#btn_exit').click(function(){
+      window.location.href = '/exit';
+    });
+    
+    $('#orcamentosView').click(function(){				
+      $.ajax({
+        url: '/orcamentosView',
+        method: 'get',
+        success: function(data){
+          $('#area1').html(data);
+        }
+      });
+    });
+
+    $('#orcamentoOpen').click(function(){				
+      $.ajax({
+        url: '/orcamentoOpen',
+        method: 'get',
+        success: function(data){
+          $('#area2').html(data);
+        }
+      });
+    });
+
+    $('#home_menu').click(function(){
+      $('#msg').hide();
+    });
+
+    $('#menu_dados').click(function(){
+      $('#msg').hide();
+    });
+
+    $('#orcamentosView').click(function(){
+      $('#msg').hide();
+    });
+
+    $('#orcamentoOpen').click(function(){
+      $('#msg').hide();
+    });
+      
+  }); 
+
+</script>
+</head>
+
+
+<body>
+  <nav class="navbar navbar-default navbar-static-top">
+    <div class="container">
+      <div class="form-group exit">
+        <button type="button" class="btn btn-info pull-right" id="btn_exit">Sair</button>
+      </div>
+    </div>
+  </nav>
+
+      
+  <div class="container">
+
+    <% if(msg == 'A'){ %>
+      <div class="alert alert-danger" id="msg">
+        <strong>Agendamento realizado com sucesso!</strong>
+      </div>
+    <% } %>
+
+    <h2>Área do cliente</h2>
+    <ul class="nav nav-pills">
+      <li class="active"><a data-toggle="pill" href="#home" id="home_menu">Página inicial</a></li>
+      <li><a data-toggle="pill" href="#menu1" id="menu_dados">Meus dados</a></li>
+      <li><a data-toggle="pill" href="#menu2" id="orcamentosView">Meus orçamentos</a></li>
+      <li><a id="orcamentoOpen" data-toggle="pill" href="#menu3" >Agendar orçamento</a></li>
+    </ul>
+        
+    <div class="tab-content">
+      <div id="home" class="tab-pane fade in active">
+        <h3>Página inicial</h3>
+        <p>Seja bem-vindo(a)</p>
+        <br />
+        <p>Nesta área você poderá visualizar seus dados e agendar um orçamento no estabelecimento.</p>
+        <p>No dia e horário agendado, o seu veículo será avaliado com um valor para realização do serviço.</p>
+      </div>
+
+      <div id="menu1" class="tab-pane fade">
+        <div class="container">
+          <h3>Informações</h3>         
+          <table cellspacing ="3" class="table table-striped">
+            <thead>
+              <tr>
+                <th>Usuário</th>
+                <th>Dados</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Nome</td>
+                <td><%=register.name%></td>
+              </tr>
+              <tr>
+                  <td>CPF</td>
+                  <td><%=register.cpf%></td>
+              </tr>
+              <tr>
+                  <td>Gênero</td>
+                  <td><%=register.genre%></td>
+              </tr>
+              <tr>
+                  <td>Endereço</td>
+                  <td><%=register.address%></td>
+              </tr>
+              <tr>
+                  <td>Bairro</td>
+                  <td><%=register.neighb%></td>
+              </tr>
+              <tr>
+                  <td>Cidade - Estado</td>
+                  <td><%=register.city%> - <%=register.state%></td>
+              </tr>
+              <tr>
+                  <td>Nº de celular</td>
+                  <td><%=register.phone%></td>
+              </tr>
+              <tr>
+                  <td>E-mail</td>
+                  <td><%=register.email%></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      
+      <div id="menu2" class="tab-pane fade">
+        <h3>Orçamentos agendados</h3>
+        <div class="row">
+            <div class="area1" id="area1"></div>         
+        </div>
+      </div>
+
+      <div id="menu3" class="tab-pane fade">
+        <p>Nesta área é possível agendar o dia e o horário disponível para levar o seu carro até a oficina.</p>
+        <div class="row">
+            <div class="area2" id="area2"></div>         
+        </div>
+      </div>
+
+    </div>
+  </div>
+</body>
+</html>
